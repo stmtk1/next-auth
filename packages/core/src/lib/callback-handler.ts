@@ -160,7 +160,7 @@ export async function handleLogin(
     const defaults = { providerAccountId, provider, type, userId }
     account = Object.assign(p.account(tokenSet) ?? {}, defaults)
 
-    if (user) {
+    if (user && session) {
       // If the user is already signed in and the OAuth account isn't already associated
       // with another user account then we can go ahead and link the accounts safely.
       await linkAccount({ ...account, userId: user.id })
